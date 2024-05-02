@@ -28,7 +28,6 @@ def get_feature_matrix():
     return df_fa
 
 def remove_outliers(df):
-    # df_transformed = data_transformation(df)
     df_clean = identify_outliers(df)
     return df_clean
 
