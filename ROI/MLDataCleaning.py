@@ -59,7 +59,6 @@ def JHU_get_metrics(modality):
     
     return df
         
-# Function to calculate skewness estimate using quantiles
 def get_quartile_skewness(column):
     Q1 = column.quantile(0.25)
     Q2 = column.quantile(0.5)  # Median
@@ -83,7 +82,6 @@ def identify_outliers(df):
     Q1 = df.quantile(0.25)
     Q3 = df.quantile(0.75)
     IQR = Q3 - Q1
-    # Condition for finding values within the acceptable range (not outliers)
     condition = ~((df < (Q1 - 4* IQR)) | (df > (Q3 + 4 * IQR))).any(axis=1)
     df_clean = df[condition]  # Apply condition
     return df[condition].index
