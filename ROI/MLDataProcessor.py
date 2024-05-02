@@ -28,7 +28,6 @@ class MLDataProcessor:
         counts = self.df.groupby('age_group').size()
         print(counts)
         
-        # use this if need mutiple splits, i.e. need in CV
         folds_data = []
         stratify_values = self.df['age_group'].values.ravel()
         splitter = StratifiedKFold(n_splits=10, random_state=random_seed, shuffle=True)
@@ -84,8 +83,6 @@ class MLDataProcessor:
         
         for i, feature in enumerate(fa.loadings_, start=1):
             weighted_scores[X_train.columns[i-1]] = np.dot(abs(feature), variance[1])
-        
-        # Calculate weighted score for each feature
         
         # print(weighted_scores)
         weighted_scores = pd.DataFrame(sorted(weighted_scores.items(), key=lambda x:x[1], reverse=True))
