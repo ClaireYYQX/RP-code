@@ -37,13 +37,13 @@ samples_per_group = {
     '80-85': 6
 }
 
-# Function to sample n records from each group based on the samples_per_group dictionary
+
 def sample_by_group(x):
     group = x.name
     n_samples = samples_per_group.get(group, 0)
     return x.sample(n=n_samples, random_state=random_seed)
 
-# Sample from each group according to the dictionary
+
 sampled_df = df_filtered.groupby('age_group').apply(sample_by_group)
 df = sampled_df.drop(['hand', 'gender_code', 'age_group'], axis=1)
 print(df)
